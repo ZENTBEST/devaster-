@@ -1,0 +1,1535 @@
+(function () {
+  var с︄ރ = 0;
+  let ᅟࠄ٦;
+  function calculateDistance(point1, point2) {
+  return window.Math.floor(window.Math.sqrt(window.Math.pow(point1.x - point2.x, 2) + window.Math.pow(point1.y - point2.y, 2)));
+}
+  class HackCon {
+  constructor() {
+    this.SAutoLootEnabled = false;
+    this.FAutoLootEnabled = false;
+    this.LootDataEnabled = false;
+    this.AutoTakeEnabled = false;
+    this.AutoBuiledEnabled = false;
+    this.AntiKickEnabled = true;
+    this.resolverType = "linear";
+    this.ShowRealAngles = "withAim";
+    this.target = "players";
+    this.AimBotEnabled = false;
+    this.hideAimbotAngle = false;
+    this.mouseFovEnable = true;
+    this.distanceCoefficient = 100;
+    this.bulletSpeedCoefficient = 4;
+    this.offsetCoefficient = 0.1;
+    this.visualizeResolving = true;
+    this.visualizeResolvingColor = "#FFF200";
+    this.autoFire = false;
+    this.jitterActive = false;
+    this.jitterOffset = 85;
+    this.stopJittersOnStop = false;
+    this.jitterHitCd = 500;
+    this.jitterAimHold = 150;
+    this.JitterKey = "KeyJ";
+    this.ShowAimTrace = false;
+    this.lockId = -1;
+    this.mouseFov = 131313;
+    this.OpenEverythingByClick = true;
+    this.ShowBuildingOwner = true;
+    this.AimbotKey = "KeyZ";
+    this.AutoBuiledKey = "KeyB";
+    this.SAutoLootKey = "KeyX";
+    this.FAutoLootKey = "KeyQ";
+    this.AutoTakeKey = "KeyT";
+    this.ShowMines = true;
+    this.ShowPlayerHitbox = false;
+    this.XrayBuildings = false;
+    this.Xraytransparency = 0.4;
+    this.XrayKey = "KeyN";
+    this.PlayersListKey = "KeyL";
+    this.PlayersListEnabled = false;
+    this.SpamChatEnabled = false;
+    this.SpamChatText = "";
+    this.PlayerId = "";
+    this.ModMenuKey = "KeyH";
+    this.ModMenuKeyCode = 72;
+    this.hit = true;
+    this.ShowPosition = true;
+    this.ShowNamesOnMap = true;
+    this.KarmaAboveHead = true;
+    this.ShowGauges = true;
+    this.TeamClanColor = "#83F6A4";
+    this.EnemyClanColor = "#FF0000";
+    this.AutoOpenSlotsInv = true;
+    this.token = "";
+    this.userId = 0;
+    this.tokenId = 0;
+    this.Token = "";
+  }
+}
+  class HackCon1 {
+  constructor() {
+    this.SAutoLootEnabled = false;
+    this.FAutoLootEnabled = false;
+    this.LootDataEnabled = false;
+    this.AutoTakeEnabled = false;
+    this.AutoBuiledEnabled = false;
+    this.AntiKickEnabled = true;
+    this.resolverType = "linear";
+    this.ShowRealAngles = "withAim";
+    this.target = "players";
+    this.AimBotEnabled = false;
+    this.hideAimbotAngle = false;
+    this.mouseFovEnable = true;
+    this.distanceCoefficient = 100;
+    this.bulletSpeedCoefficient = 4;
+    this.offsetCoefficient = 0.1;
+    this.visualizeResolving = true;
+    this.visualizeResolvingColor = "#FFF200";
+    this.autoFire = false;
+    this.jitterActive = false;
+    this.jitterOffset = 85;
+    this.stopJittersOnStop = false;
+    this.jitterHitCd = 500;
+    this.jitterAimHold = 150;
+    this.JitterKey = "KeyJ";
+    this.ShowAimTrace = false;
+    this.lockId = -1;
+    this.mouseFov = 131313;
+    this.OpenEverythingByClick = true;
+    this.ShowBuildingOwner = true;
+    this.AimbotKey = "KeyZ";
+    this.AutoBuiledKey = "KeyB";
+    this.SAutoLootKey = "KeyX";
+    this.FAutoLootKey = "KeyQ";
+    this.AutoTakeKey = "KeyT";
+    this.ShowMines = true;
+    this.ShowPlayerHitbox = false;
+    this.XrayBuildings = false;
+    this.Xraytransparency = 0.4;
+    this.XrayKey = "KeyN";
+    this.PlayersListKey = "KeyL";
+    this.PlayersListEnabled = false;
+    this.SpamChatEnabled = false;
+    this.SpamChatText = "";
+    this.PlayerId = "";
+    this.ModMenuKey = "KeyH";
+    this.ModMenuKeyCode = 72;
+    this.hit = true;
+    this.ShowPosition = true;
+    this.ShowNamesOnMap = true;
+    this.KarmaAboveHead = true;
+    this.ShowGauges = true;
+    this.TeamClanColor = "#83F6A4";
+    this.EnemyClanColor = "#FF0000";
+    this.AutoOpenSlotsInv = true;
+    this.token = "";
+    this.userId = 0;
+    this.tokenId = 0;
+    this.Token = "";
+  }
+}
+  class GetAllTargetsCon {
+  constructor() {
+    this.players = [];
+    this.ghouls = [];
+    for (let player = 1; player < 121; player++) {
+      this.players[player] = new GetTarget(player);
+    }
+    for (let ghoul = 1; ghoul < 999; ghoul++) {
+      this.ghouls[ghoul] = new GetTarget(ghoul);
+    }
+    this.obstacles = [];
+    this.lines = [];
+    this.lines.push(new LinesCon(0.6, 1, "#FFF200"));
+    this.lines.push(new LinesCon(0.8, 3, "#FF0000"));
+    this.lines.push(new LinesCon(0.8, 3, "#00FF00"));
+    this.lines.push(new LinesCon(0.8, 2, "#0000FF"));
+    this.mousePosition = {
+      x: 0,
+      y: 0
+    };
+    this.mouseMapCords = {
+      x: 0,
+      y: 0
+    };
+    this.shifting = false;
+    this.menuActive = false;
+    this.menuX = 0;
+    this.menuY = 0;
+    this.menuWidth = 0;
+    this.menuHeight = 0;
+    this.lastId = 0;
+    this.myLastMoveDirection = 0;
+  }
+  getPlayerById(pID) {
+    return this.players[pID];
+  }
+  getGhoulByUid(uID) {
+    return this.ghouls[uID];
+  }
+}
+  class GetTarget {
+  constructor(ids) {
+    this.id = ids;
+    this.x = -1;
+    this.y = -1;
+    this.prevX = [];
+    this.prevY = [];
+    this.active = false;
+    this.weapon = -1;
+    this.gear = -1;
+    for (let lastpos = 0; lastpos < 3; lastpos++) {
+      this.prevX.push(-1);
+      this.prevY.push(-1);
+    }
+  }
+  update(ux, uy, xy) {
+    if (this.x !== ux || this.y !== uy) {
+      this.active = true;
+      this.prevX[2] = this.prevX[1];
+      this.prevX[1] = this.prevX[0];
+      this.prevX[0] = this.x;
+      this.x = ux;
+      this.prevY[2] = this.prevY[1];
+      this.prevY[1] = this.prevY[0];
+      this.prevY[0] = this.y;
+      this.y = uy;
+      this.weapon = xy;
+      AimbotRefresh();
+    }
+  }
+  setInactive() {
+    this.x = -1;
+    this.y = -1;
+    for (let lastposs = 0; lastposs < 3; lastposs++) {
+      this.prevX[lastposs] = -1;
+      this.prevY[lastposs] = -1;
+    }
+    this.active = false;
+    this.weapon = -1;
+    AimbotRefresh();
+  }
+}
+  function _lineIntersect(x1, y1, x2, y2, x3, y3, x4, y4) {
+  const d = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
+  if (d === 0) return null;
+  const t = ((x1 - x3) * (y3 - y4) - (y1 - y3) * (x3 - x4)) / d;
+  return { x: x1 + t * (x2 - x1), y: y1 + t * (y2 - y1) };
+}
+  class AimbotCon {
+  constructor() {
+    this.lastAngle = 0;
+    this.targetPlayer = null;
+    this.dead = false;
+    this.mouseDown = false;
+    this.lastHitTs = 0;
+  }
+  onDeath() {
+    this.dead = true;
+    this.targetPlayer = null;
+    this.lastAngle = 0;
+    this.mouseDown = false;
+    GetAllTargets.lines.forEach(line => line.reset(-1, -1, -1, -1));
+    GetAllTargets.lastId = 0;
+    for (let i = 1; i < GetAllTargets.players.length; i++) { const p = GetAllTargets.getPlayerById(i); if (p && p.active) p.setInactive(); }
+    for (let i = 1; i < GetAllTargets.ghouls.length; i++) { const g = GetAllTargets.getGhoulByUid(i); if (g && g.active) g.setInactive(); }
+  }
+  scheduleRefresh() {
+    if (this.isDead()) return;
+    this.refresh();
+  }
+  isDead() {
+    if (!ϲܛߋ.ⲥ̜６ || ϲܛߋ.ⲥ̜６.id === 0) return true;
+    if (!GetAllTargets.getPlayerById(ϲܛߋ.ⲥ̜６.id)) return true;
+    this.dead = false;
+    return false;
+  }
+  refresh() {
+    GetAllTargets.lines.forEach(line => line.reset(-1, -1, -1, -1));
+    if (this.isDead()) { this.targetPlayer = null; return; }
+    GetAllTargets.lastId = ϲܛߋ.ⲥ̜６.id;
+    if (!MOD.AimBotEnabled) { this.targetPlayer = null; return; }
+    if (MOD.jitterActive) {
+      const aimAngle = this.resolve();
+      const now = performance.now();
+      if (this.mouseDown && now - this.lastHitTs >= MOD.jitterHitCd) this.lastHitTs = now;
+      if (this.targetPlayer && now - this.lastHitTs < MOD.jitterAimHold) {
+        аρ３.ᴉࡃϲ(window.JSON.stringify([6, aimAngle]));
+      } else if (this.targetPlayer || this.mouseDown || !MOD.stopJittersOnStop || GetAllTargets.myLastMoveDirection !== 0) {
+        аρ３.ᴉࡃϲ(window.JSON.stringify([6, Jitter.getJitterAngle()]));
+      }
+    } else {
+      const angleToSend = this.resolve();
+      if (this.targetPlayer) аρ３.ᴉࡃϲ(window.JSON.stringify([6, angleToSend]));
+      if (MOD.autoFire && this.wannaFire()) {
+        аρ３.ᴉࡃϲ(window.JSON.stringify([4]));
+        аρ３.ᴉࡃϲ(window.JSON.stringify([5]));
+      }
+    }
+  }
+  wannaFire(watarget = this.targetPlayer) {
+    if (!watarget) return false;
+    const dx = watarget.x - watarget.prevX[0], dy = watarget.y - watarget.prevY[0];
+    const dxPrev = watarget.prevX[0] - watarget.prevX[1], dyPrev = watarget.prevY[0] - watarget.prevY[1];
+    return (dx > 0) != (dxPrev > 0) || (dy > 0) != (dyPrev > 0);
+  }
+  resolve() {
+    try {
+      const myPlayer = GetAllTargets.getPlayerById(ϲܛߋ.ⲥ̜６.id);
+      let target = null;
+      if (MOD.lockId > -1) {
+        target = GetAllTargets.getPlayerById(MOD.lockId);
+      } else if (MOD.mouseFovEnable) {
+        target = this.findNearestPlayerTo(GetAllTargets.mouseMapCords, MOD.mouseFov);
+      } else {
+        target = this.findNearestPlayerTo(myPlayer, 2500);
+      }
+      this.targetPlayer = target;
+      if (!target || !myPlayer || myPlayer.x < 0) { this.targetPlayer = null; return this.lastAngle; }
+      if (MOD.resolverType === "trygonometrical") {
+        let angle;
+        if (target.prevX[0] === -1) {
+          if (MOD.visualizeResolving) GetAllTargets.lines[0].reset(myPlayer.x, myPlayer.y, target.x, target.y);
+          if (MOD.ShowAimTrace) { GetAllTargets.lines[2].color = MOD.visualizeResolvingColor || "#1e78c8"; GetAllTargets.lines[2].reset(myPlayer.x, myPlayer.y, target.x, target.y); } else GetAllTargets.lines[2].reset(-1, -1, -1, -1);
+          angle = window.Math.atan2(target.y - myPlayer.y, target.x - myPlayer.x) * 180 / window.Math.PI;
+        } else {
+          const dist = window.Math.sqrt(window.Math.pow(target.y - target.prevY[0], 2) + window.Math.pow(target.x - target.prevX[0], 2));
+          const normY = dist > 0 ? (target.y - target.prevY[0]) / dist : 0;
+          const normX = dist > 0 ? (target.x - target.prevX[0]) / dist : 0;
+          const d = calculateDistance(myPlayer, target);
+          const cosArg = (normY * (target.x - myPlayer.x) - normX * (target.y - myPlayer.y)) / (d * MOD.bulletSpeedCoefficient);
+          const clampedArg = window.Math.max(-1, window.Math.min(1, cosArg));
+          angle = (window.Math.atan2(target.y - myPlayer.y, target.x - myPlayer.x) + window.Math.acos(clampedArg)) * 180 / window.Math.PI;
+          const intersection = _lineIntersect(target.x, target.y, target.x + (target.x - target.prevX[0]) * 50, target.y + (target.y - target.prevY[0]) * 50, myPlayer.x, myPlayer.y, myPlayer.x + window.Math.cos(angle * window.Math.PI / 180) * 3000, myPlayer.y + window.Math.sin(angle * window.Math.PI / 180) * 3000);
+          if (MOD.visualizeResolving && intersection) GetAllTargets.lines[0].reset(myPlayer.x, myPlayer.y, intersection.x, intersection.y);
+          else if (MOD.visualizeResolving) GetAllTargets.lines[0].reset(myPlayer.x, myPlayer.y, target.x, target.y);
+          if (MOD.ShowAimTrace) { GetAllTargets.lines[2].color = MOD.visualizeResolvingColor || "#FFFFFF"; GetAllTargets.lines[2].reset(myPlayer.x, myPlayer.y, target.x, target.y); } else GetAllTargets.lines[2].reset(-1, -1, -1, -1);
+        }
+        if (MOD.hideAimbotAngle) аρ３.ᴉࡃϲ(window.JSON.stringify([6, angle]));
+        angle = ((angle % 360) + 360) % 360;
+        this.lastAngle = angle;
+        return angle;
+      }
+      let targetX, targetY;
+      if (target.prevX[0] === -1) {
+        targetX = target.x;
+        targetY = target.y;
+      } else {
+        const factor = calculateDistance(myPlayer, target) / MOD.distanceCoefficient + MOD.offsetCoefficient;
+        targetX = target.x + factor * (target.x - target.prevX[0]);
+        targetY = target.y + factor * (target.y - target.prevY[0]);
+      }
+      if (MOD.visualizeResolving) GetAllTargets.lines[0].reset(myPlayer.x, myPlayer.y, targetX, targetY);
+      if (MOD.ShowAimTrace) { GetAllTargets.lines[2].color = MOD.visualizeResolvingColor || "#FFFFFF"; GetAllTargets.lines[2].reset(myPlayer.x, myPlayer.y, targetX, targetY); } else GetAllTargets.lines[2].reset(-1, -1, -1, -1);
+      const angle = ((window.Math.atan2(targetY - myPlayer.y, targetX - myPlayer.x) * (180 / window.Math.PI)) % 360 + 360) % 360;
+      if (MOD.hideAimbotAngle) аρ３.ᴉࡃϲ(window.JSON.stringify([6, angle]));
+      this.lastAngle = angle;
+      return angle;
+    } catch (e) {
+      return this.lastAngle;
+    }
+  }
+  findNearestPlayerTo(cords, Fov) {
+    let fov = Fov, selected = null;
+    if (MOD.target === "players" || MOD.target === "all") {
+      for (let id = 1; id < GetAllTargets.players.length; id++) {
+        const player = GetAllTargets.getPlayerById(id);
+        if (!player || !player.active || player.id === ϲܛߋ.ⲥ̜６.id) continue;
+        const wp = ϲܛߋ.ⲣࠁއ[player.id];
+        if (wp && ϲܛߋ.ⲥ̜６.ⲥߓ !== -1 && wp.ⲥߓ === ϲܛߋ.ⲥ̜６.ⲥߓ) continue;
+        const dist = calculateDistance(cords, player);
+        if (dist < fov) { selected = player; fov = dist; }
+      }
+    }
+    if (MOD.target === "ghouls" || MOD.target === "all") {
+      for (let uid = 1; uid < GetAllTargets.ghouls.length; uid++) {
+        const ghoul = GetAllTargets.getGhoulByUid(uid);
+        if (!ghoul || !ghoul.active) continue;
+        const dist = calculateDistance(cords, ghoul);
+        if (dist < fov) { selected = ghoul; fov = dist; }
+      }
+    }
+    return selected;
+  }
+}
+  class JitterCon {
+  constructor() {
+    this.jitterStep = false;
+  }
+  getJitterAngle() {
+    this.jitterStep = !this.jitterStep;
+    let base = Aimbot.lastAngle;
+    let angle = this.jitterStep ? base + MOD.jitterOffset : base - MOD.jitterOffset;
+    angle = ((angle % 360) + 360) % 360;
+    return angle;
+  }
+}
+  class LinesCon {
+  constructor(alpha, width, color) {
+    this.x1 = -10;
+    this.x2 = -10;
+    this.y1 = -10;
+    this.y2 = -10;
+    this.alpha = alpha;
+    this.width = width;
+    this.color = color;
+  }
+  reset(x1, y1, x2, y2) {
+    this.x1 = x1;
+    this.x2 = x2;
+    this.y1 = y1;
+    this.y2 = y2;
+  }
+}
+  function AimbotRefresh() {
+  Aimbot.refresh();
+}
+  var GetAllTargets = new GetAllTargetsCon();
+  var MOD = new HackCon();
+  var _players_list = [];
+  var _spam_chat_interval = null;
+  function _clanFreeNick(_p) {
+  var _n = String(_p.Ꮷ̵ࡇ);
+  var _t = _p.ⲥߓ !== -1 ? ϲܛߋ.ᴇ１̝[_p.ⲥߓ] : null;
+  if (_t && _t.name) {
+    var _tag = "[" + _t.name + "]";
+    var _i = _n.toLowerCase().indexOf(_tag.toLowerCase());
+    if (_i !== -1) _n = (_n.slice(0, _i) + _n.slice(_i + _tag.length)).replace(/^\s+/, "");
+  }
+  return _n;
+}
+  function _onlineNick(_id) {
+  var _p = ϲܛߋ.ⲣࠁއ[_id];
+  var _n = _p ? _p.Ꮷ̵ࡇ : undefined;
+  if (typeof _n !== "string" || _n === "") _n = _players_list[_id];
+  return typeof _n === "string" && _n !== "" ? _n : null;
+}
+  function _nickOf(_id) {
+  var _p = ϲܛߋ.ⲣࠁއ[parseInt(_id, 10)];
+  var _n = _p && typeof _p.Ꮷ̵ࡇ === "string" ? _p.Ꮷ̵ࡇ : (typeof _players_list[_id] === "string" ? _players_list[_id] : "");
+  return String(_n).replace(/#\d+$/, "");
+}
+  function CopyNickname(_id) {
+  var _n = _nickOf(_id);
+  if (!_n) { alert("Player #" + _id + " not found"); return; }
+  alert(_n);
+  navigator.clipboard.writeText(_n);
+}
+  function CopyAllNicknames() {
+  var result = [];
+  for (var _id = 1; _id < Math.max(ϲܛߋ.ⲣࠁއ.length, _players_list.length); _id++) {
+    if (_onlineNick(_id) !== null) { var _n = _nickOf(_id); if (_n) result.push(_n); }
+  }
+  if (result.length > 0) navigator.clipboard.writeText(result.join("\n"));
+}
+  var MOD1 = new HackCon1();
+  var Aimbot = new AimbotCon();
+  var Jitter = new JitterCon();
+  (function _aimbotLoop() {
+  try {
+    if (MOD.AimBotEnabled && !Aimbot.isDead()) Aimbot.refresh();
+  } catch (e) {}
+  window.requestAnimationFrame(_aimbotLoop);
+})();
+  window.addEventListener("mousemove", event => {
+  GetAllTargets.mousePosition.x = event.clientX;
+  GetAllTargets.mousePosition.y = event.clientY;
+});
+  function handleAction() {
+  var gridSize = 100;
+  var mouseX = window.Math.round(GetAllTargets.mouseMapCords.x);
+  var mouseY = window.Math.round(GetAllTargets.mouseMapCords.y);
+  var snappedMouseX = window.Math.floor(mouseX / gridSize) * gridSize;
+  var snappedMouseY = window.Math.floor(mouseY / gridSize) * gridSize;
+  var _x = snappedMouseX / 100;
+  var _y = snappedMouseY / 100;
+  var _position = _x + ":" + _y;
+  if (_position in _subject_data) {
+    MOD.hit = false;
+    аρ３.ᴉࡃϲ(window.JSON.stringify([_subject_data[_position][0], _subject_data[_position][1], _subject_data[_position][2]]));
+  }
+}
+  const lootItems = [{
+  name: "smallwood",
+  acquire: false,
+  еօ͡: 0
+}, {
+  name: "mediumwood",
+  acquire: false,
+  еօ͡: 1
+}, {
+  name: "bigwood",
+  acquire: false,
+  еօ͡: 2
+}, {
+  name: "smallstone",
+  acquire: false,
+  еօ͡: 3
+}, {
+  name: "mediumstone",
+  acquire: false,
+  еօ͡: 4
+}, {
+  name: "bigstone",
+  acquire: false,
+  еօ͡: 5
+}, {
+  name: "steel",
+  acquire: true,
+  еօ͡: 6
+}, {
+  name: "animalfat",
+  acquire: false,
+  еօ͡: 7
+}, {
+  name: "animaltendon",
+  acquire: false,
+  еօ͡: 8
+}, {
+  name: "string",
+  acquire: false,
+  еօ͡: 9
+}, {
+  name: "leatherboar",
+  acquire: false,
+  еօ͡: 10
+}, {
+  name: "shapedmetal",
+  acquire: true,
+  еօ͡: 11
+}, {
+  name: "rawsteak",
+  acquire: false,
+  еօ͡: 12
+}, {
+  name: "cookedsteak",
+  acquire: true,
+  еօ͡: 13
+}, {
+  name: "rottensteak",
+  acquire: false,
+  еօ͡: 14
+}, {
+  name: "orange",
+  acquire: false,
+  еօ͡: 15
+}, {
+  name: "rottenorange",
+  acquire: false,
+  еօ͡: 16
+}, {
+  name: "seedorange",
+  acquire: false,
+  еօ͡: 17
+}, {
+  name: "hachet",
+  acquire: false,
+  еօ͡: 18
+}, {
+  name: "stonepickaxe",
+  acquire: false,
+  еօ͡: 19
+}, {
+  name: "steelpickaxe",
+  acquire: false,
+  еօ͡: 20
+}, {
+  name: "stoneaxe",
+  acquire: false,
+  еօ͡: 21
+}, {
+  name: "workbench",
+  acquire: false,
+  еօ͡: 22
+}, {
+  name: "woodspear",
+  acquire: false,
+  еօ͡: 23
+}, {
+  name: "woodbow",
+  acquire: false,
+  еօ͡: 24
+}, {
+  name: "9mm",
+  acquire: true,
+  еօ͡: 25
+}, {
+  name: "deserteagle",
+  acquire: true,
+  еօ͡: 26
+}, {
+  name: "shotgun",
+  acquire: true,
+  еօ͡: 27
+}, {
+  name: "ak51",
+  acquire: true,
+  еօ͡: 28
+}, {
+  name: "sniper",
+  acquire: true,
+  еօ͡: 29
+}, {
+  name: "woodwall",
+  acquire: false,
+  еօ͡: 30
+}, {
+  name: "stonewall",
+  acquire: true,
+  еօ͡: 31
+}, {
+  name: "steelwall",
+  acquire: true,
+  еօ͡: 32
+}, {
+  name: "wooddoor",
+  acquire: false,
+  еօ͡: 33
+}, {
+  name: "stonedoor",
+  acquire: true,
+  еօ͡: 34
+}, {
+  name: "steeldoor",
+  acquire: true,
+  еօ͡: 35
+}, {
+  name: "campfire",
+  acquire: false,
+  еօ͡: 36
+}, {
+  name: "bullet9mm",
+  acquire: true,
+  еօ͡: 37
+}, {
+  name: "bulletshotgun",
+  acquire: true,
+  еօ͡: 38
+}, {
+  name: "bulletsniper",
+  acquire: true,
+  еօ͡: 39
+}, {
+  name: "medikit",
+  acquire: false,
+  еօ͡: 40
+}, {
+  name: "bandage",
+  acquire: false,
+  еօ͡: 41
+}, {
+  name: "soda",
+  acquire: false,
+  еօ͡: 42
+}, {
+  name: "mp5",
+  acquire: true,
+  еօ͡: 43
+}, {
+  name: "headscarf",
+  acquire: false,
+  еօ͡: 44
+}, {
+  name: "chapka",
+  acquire: true,
+  еօ͡: 45
+}, {
+  name: "wintercoat",
+  acquire: true,
+  еօ͡: 46
+}, {
+  name: "gazmask",
+  acquire: false,
+  еօ͡: 47
+}, {
+  name: "gazprotection",
+  acquire: true,
+  еօ͡: 48
+}, {
+  name: "radiationsuit",
+  acquire: true,
+  еօ͡: 49
+}, {
+  name: "woodarrow",
+  acquire: false,
+  еօ͡: 50
+}, {
+  name: "campfirebbq",
+  acquire: true,
+  еօ͡: 51
+}, {
+  name: "smelter",
+  acquire: true,
+  еօ͡: 52
+}, {
+  name: "woodbigdoor",
+  acquire: false,
+  еօ͡: 53
+}, {
+  name: "stonebigdoor",
+  acquire: false,
+  еօ͡: 54
+}, {
+  name: "steelbigdoor",
+  acquire: false,
+  еօ͡: 55
+}, {
+  name: "sulfur",
+  acquire: true,
+  еօ͡: 56
+}, {
+  name: "shapeduranium",
+  acquire: true,
+  еօ͡: 57
+}, {
+  name: "workbench2",
+  acquire: true,
+  еօ͡: 58
+}, {
+  name: "uranium",
+  acquire: true,
+  еօ͡: 59
+}, {
+  name: "weaving",
+  acquire: false,
+  еօ͡: 60
+}, {
+  name: "gasoline",
+  acquire: true,
+  еօ͡: 61
+}, {
+  name: "sulfurpickaxe",
+  acquire: true,
+  еօ͡: 62
+}, {
+  name: "chest",
+  acquire: false,
+  еօ͡: 63
+}, {
+  name: "fridge",
+  acquire: false,
+  еօ͡: 64
+}, {
+  name: "woodfloor",
+  acquire: false,
+  еօ͡: 65
+}, {
+  name: "hammer",
+  acquire: true,
+  еօ͡: 66
+}, {
+  name: "sleepingbag",
+  acquire: false,
+  еօ͡: 67
+}, {
+  name: "repairhammer",
+  acquire: false,
+  еօ͡: 68
+}, {
+  name: "nails",
+  acquire: false,
+  еօ͡: 69
+}, {
+  name: "woodlightfloor",
+  acquire: false,
+  еօ͡: 70
+}, {
+  name: "woodsmallwall",
+  acquire: false,
+  еօ͡: 71
+}, {
+  name: "stonesmallwall",
+  acquire: false,
+  еօ͡: 72
+}, {
+  name: "steelsmallwall",
+  acquire: false,
+  еօ͡: 73
+}, {
+  name: "tomatosoup",
+  acquire: true,
+  еօ͡: 74
+}, {
+  name: "syringe",
+  acquire: false,
+  еօ͡: 75
+}, {
+  name: "chemicalcomponent",
+  acquire: false,
+  еօ͡: 76
+}, {
+  name: "radaway",
+  acquire: false,
+  еօ͡: 77
+}, {
+  name: "seedtomato",
+  acquire: false,
+  еօ͡: 78
+}, {
+  name: "tomato",
+  acquire: false,
+  еօ͡: 79
+}, {
+  name: "rottentomato",
+  acquire: false,
+  еօ͡: 80
+}, {
+  name: "can",
+  acquire: false,
+  еօ͡: 81
+}, {
+  name: "woodcrossbow",
+  acquire: false,
+  еօ͡: 82
+}, {
+  name: "woodcrossarrow",
+  acquire: false,
+  еօ͡: 83
+}, {
+  name: "nailgun",
+  acquire: false,
+  еօ͡: 84
+}, {
+  name: "sawedoffshotgun",
+  acquire: true,
+  еօ͡: 85
+}, {
+  name: "stonefloor",
+  acquire: false,
+  еօ͡: 86
+}, {
+  name: "tilingfloor",
+  acquire: false,
+  еօ͡: 87
+}, {
+  name: "crisps",
+  acquire: false,
+  еօ͡: 88
+}, {
+  name: "rottencrisps",
+  acquire: false,
+  еօ͡: 89
+}, {
+  name: "electronics",
+  acquire: true,
+  еօ͡: 90
+}, {
+  name: "junk",
+  acquire: true,
+  еօ͡: 91
+}, {
+  name: "bigwire",
+  acquire: true,
+  еօ͡: 92
+}, {
+  name: "energycells",
+  acquire: true,
+  еօ͡: 93
+}, {
+  name: "laserpistol",
+  acquire: true,
+  еօ͡: 94
+}, {
+  name: "tesla",
+  acquire: true,
+  еօ͡: 95
+}, {
+  name: "alloys",
+  acquire: true,
+  еօ͡: 96
+}, {
+  name: "sulfuraxe",
+  acquire: true,
+  еօ͡: 97
+}, {
+  name: "landmine",
+  acquire: true,
+  еօ͡: 98
+}, {
+  name: "dynamite",
+  acquire: true,
+  еօ͡: 99
+}, {
+  name: "c4",
+  acquire: true,
+  еօ͡: 100
+}, {
+  name: "c4trigger",
+  acquire: false,
+  еօ͡: 101
+}, {
+  name: "compost",
+  acquire: false,
+  еօ͡: 102
+}, {
+  name: "armorphysic1",
+  acquire: false,
+  еօ͡: 103
+}, {
+  name: "armorphysic2",
+  acquire: true,
+  еօ͡: 104
+}, {
+  name: "armorphysic3",
+  acquire: true,
+  еօ͡: 105
+}, {
+  name: "armorfire1",
+  acquire: false,
+  еօ͡: 106
+}, {
+  name: "armorfire2",
+  acquire: true,
+  еօ͡: 107
+}, {
+  name: "armorfire3",
+  acquire: true,
+  еօ͡: 108
+}, {
+  name: "armordeminer",
+  acquire: false,
+  еօ͡: 109
+}, {
+  name: "armortesla1",
+  acquire: true,
+  еօ͡: 110
+}, {
+  name: "armortesla2",
+  acquire: true,
+  еօ͡: 111
+}, {
+  name: "woodspike",
+  acquire: false,
+  еօ͡: 112
+}, {
+  name: "lasersubmachine",
+  acquire: true,
+  еօ͡: 113
+}, {
+  name: "grenade",
+  acquire: true,
+  еօ͡: 114
+}, {
+  name: "superhammer",
+  acquire: true,
+  еօ͡: 115
+}, {
+  name: "ghoulblood",
+  acquire: false,
+  еօ͡: 116
+}, {
+  name: "camouflagegear",
+  acquire: false,
+  еօ͡: 117
+}, {
+  name: "agitator",
+  acquire: false,
+  еօ͡: 118
+}, {
+  name: "ghouldrug",
+  acquire: false,
+  еօ͡: 119
+}, {
+  name: "mushroom1",
+  acquire: false,
+  еօ͡: 120
+}, {
+  name: "mushroom2",
+  acquire: false,
+  еօ͡: 121
+}, {
+  name: "mushroom3",
+  acquire: false,
+  еօ͡: 122
+}, {
+  name: "rottenmushroom1",
+  acquire: false,
+  еօ͡: 123
+}, {
+  name: "rottenmushroom2",
+  acquire: false,
+  еօ͡: 124
+}, {
+  name: "rottenmushroom3",
+  acquire: false,
+  еօ͡: 125
+}, {
+  name: "lapadone",
+  acquire: false,
+  еօ͡: 126
+}, {
+  name: "lapabotrepair",
+  acquire: true,
+  еօ͡: 127
+}, {
+  name: "smallwire",
+  acquire: true,
+  еօ͡: 128
+}, {
+  name: "pumpkin",
+  acquire: true,
+  еօ͡: 129
+}, {
+  name: "rottenpumpkin",
+  acquire: false,
+  еօ͡: 130
+}, {
+  name: "seedghoul",
+  acquire: true,
+  еօ͡: 131
+}, {
+  name: "äáäctor",
+  acquire: false,
+  еօ͡: 132
+}, {
+  name: "antidote",
+  acquire: false,
+  еօ͡: 133
+}, {
+  name: "antidoteflower",
+  acquire: false,
+  еօ͡: 134
+}, {
+  name: "seedtree",
+  acquire: false,
+  еօ͡: 135
+}, {
+  name: "acorn",
+  acquire: false,
+  еօ͡: 136
+}, {
+  name: "rottenacorn",
+  acquire: false,
+  еօ͡: 137
+}, {
+  name: "lasersniper",
+  acquire: true,
+  еօ͡: 138
+}, {
+  name: "halbot",
+  acquire: true,
+  еօ͡: 139
+}, {
+  name: "teslabot",
+  acquire: true,
+  еօ͡: 140
+}, {
+  name: "cable0",
+  acquire: false,
+  еօ͡: 141
+}, {
+  name: "cable1",
+  acquire: false,
+  еօ͡: 142
+}, {
+  name: "cable2",
+  acquire: false,
+  еօ͡: 143
+}, {
+  name: "cable3",
+  acquire: false,
+  еօ͡: 144
+}, {
+  name: "switch",
+  acquire: false,
+  еօ͡: 145
+}, {
+  name: "gateor",
+  acquire: false,
+  еօ͡: 146
+}, {
+  name: "gateand",
+  acquire: false,
+  еօ͡: 147
+}, {
+  name: "gatenot",
+  acquire: false,
+  еօ͡: 148
+}, {
+  name: "lamp",
+  acquire: false,
+  еօ͡: 149
+}, {
+  name: "cablewall",
+  acquire: false,
+  еօ͡: 150
+}, {
+  name: "automaticdoor",
+  acquire: false,
+  еօ͡: 151
+}, {
+  name: "platform",
+  acquire: false,
+  еօ͡: 152
+}, {
+  name: "stonecave",
+  acquire: true,
+  еօ͡: 153
+}, {
+  name: "bunkerwall",
+  acquire: true,
+  еօ͡: 154
+}, {
+  name: "goldfloor",
+  acquire: false,
+  еօ͡: 155
+}, {
+  name: "redfloor",
+  acquire: false,
+  еօ͡: 156
+}, {
+  name: "weldingmachine",
+  acquire: false,
+  еօ͡: 157
+}, {
+  name: "cable4",
+  acquire: false,
+  еօ͡: 158
+}, {
+  name: "gatetimer",
+  acquire: false,
+  еօ͡: 159
+}, {
+  name: "gatexorcounter",
+  acquire: false,
+  еօ͡: 160
+}, {
+  name: "feeder",
+  acquire: true,
+  еօ͡: 161
+}];
+  const LootData = Object.fromEntries(lootItems.map(({
+  name,
+  acquire,
+  ⲥ༩̊
+}) => [name, {
+  acquire,
+  ⲥ༩̊
+}]));
+  const ᴀ༩ᴀ = window;
+  let ⲥ̢︊;
+  let е̗̇;
+  let ̷ᄀ;
+  let с᠌︄;
+  const ѕ︄͡ = 16;
+  const ε๘६ = ѕ︄͡;
+  let ѕ̶ࠀ = 35;
+  const ๑८ = 242;
+  const ༣о = 99;
+  let ɑᚉρ = 216;
+  if (ɑᚉρ >= 2) {
+    ɑᚉρ = 223;
+  }
+  if (๑८ == ༣о) {
+    ѕ̶ࠀ = 103;
+  }
+  const ᴌ６४ = {
+    65024: 5,
+    65025: 9,
+    65026: 3,
+    65027: 2,
+    65028: 11,
+    65029: 6,
+    65030: 4,
+    65031: 10,
+    65032: 13,
+    65033: 15,
+    65034: 12,
+    65035: 0,
+    65036: 7,
+    65037: 1,
+    65038: 8,
+    65039: 14
+  };
+  window.ιࠅ０ = 214;
+  const ᴀࡈо = 2336;
+  const ᴄеށ = [217, 88, 36, 174, 75, 71, 7, 13, 69, 138, 14, 153, 255, 68, 156, 222, 53, 192, 70, 246, 224, 11, 29, 181, 117, 209, 147, 118, 164, 141, 21, 251, 100, 160, 92, 194, 26, 203, 210, 62, 126, 1, 2, 109, 218, 114, 56, 225, 63, 179, 205, 136, 152, 206, 157, 89, 253, 25, 149, 81, 197, 33, 18, 83, 103, 98, 59, 182, 226, 135, 236, 76, 27, 163, 132, 60, 243, 9, 239, 94, 191, 55, 215, 96, 97, 24, 58, 232, 80, 119, 102, 178, 180, 240, 137, 173, 186, 17, 249, 170, 110, 207, 159, 237, 202, 154, 40, 193, 134, 48, 101, 145, 189, 111, 200, 124, 115, 228, 22, 188, 223, 227, 30, 74, 0, 86, 161, 105, 72, 113, 51, 121, 198, 10, 112, 130, 219, 247, 38, 190, 93, 37, 28, 162, 65, 52, 187, 35, 171, 31, 176, 143, 8, 242, 67, 54, 144, 220, 230, 20, 229, 84, 142, 139, 151, 166, 212, 146, 175, 16, 34, 19, 155, 216, 50, 5, 195, 199, 252, 245, 235, 107, 57, 108, 23, 77, 66, 201, 78, 140, 42, 183, 90, 248, 41, 49, 87, 208, 196, 150, 3, 234, 123, 64, 244, 241, 85, 250, 127, 168, 211, 44, 131, 12, 184, 47, 213, 15, 167, 43, 254, 91, 106, 99, 46, 172, 204, 45, 165, 122, 214, 125, 231, 32, 185, 104, 79, 221, 148, 177, 61, 4, 6, 169, 233, 128, 158, 129, 120, 133, 73, 39, 95, 116, 82, 238];
+  let ވ̙;
+  let ι︅ɑ;
+  let Ꮷޅ٣;
+  let ܐᚈ̃;
+  let ᴉࡃ٤;
+  let ρ̣︅;
+  const ԁɑα = 34;
+  let ϲᚄᚂ = 139;
+  let ࡀ͢;
+  let рᚊ︉;
+  let ᴑοᴏ;
+  let ѕ༠１;
+  if (ϲᚄᚂ === 14) {
+    ϲᚄᚂ = 200;
+  }
+  ԁɑα.̈р = 2;
+  let ᴑ０ = 229;
+  const оܙܘ = 29;
+  const І༦ = 213;
+  if (оܙܘ >= І༦) {
+    ᴑ０ = 175;
+  }
+  const εⲥ० = function (ᴏ８٥) {
+    let ︍е = ᴏ８٥;
+    let оޅι;
+    let ԁࠄᴌ = 23;
+    let аո︀ = [];
+    let ɑ๐ށ = 0;
+    let ᴄ٠ބ = 0;
+    let οބ̷;
+    while (ԁࠄᴌ !== 999) {
+      switch (ԁࠄᴌ) {
+        case 22:
+          ԁࠄᴌ = ᴄ٠ބ < аո︀.length - 1 ? 6 : 999;
+          break;
+        case 24:
+          ԁࠄᴌ = ɑ๐ށ < ︍е.length ? 27 : 33;
+          break;
+        case 27:
+          οބ̷ = ︍е.charCodeAt(ɑ๐ށ);
+          ɑ๐ށ++;
+          ԁࠄᴌ = 4;
+          break;
+        case 23:
+          оޅι = [];
+          аո︀ = [];
+          ɑ๐ށ = 0;
+          ԁࠄᴌ = 24;
+          break;
+        case 4:
+          if (ᴌ６४[οބ̷] !== undefined) {
+            аո︀.push(ᴌ６४[οބ̷]);
+          }
+          ԁࠄᴌ = 24;
+          break;
+        case 33:
+          ᴄ٠ބ = 0;
+          ԁࠄᴌ = 22;
+          break;
+        case 11:
+          if (false) {
+            ε８о = 90;
+          }
+          ;
+          ԁࠄᴌ = 33;
+          break;
+        case 12:
+          undefined;
+          ԁࠄᴌ = 22;
+          break;
+        case 6:
+          оޅι[оޅι.length] = аո︀[ᴄ٠ބ] << 4 | аո︀[ᴄ٠ބ + 1];
+          ԁࠄᴌ = 26;
+          break;
+        case 3:
+          undefined;
+          ԁࠄᴌ = 6;
+          break;
+        case 26:
+          ᴄ٠ބ += 2;
+          ԁࠄᴌ = 22;
+          break;
+      }
+    }
+    ︍е = оޅι;
+    return ︍е;
+  };
+  let ̍︌ = 249;
+  let ⲥ４ܚ = -172;
+  if (̍︌ == 8) {
+    ̍︌ = 204;
+  }
+  const ոε༩ = 10920;
+  let ７︆ = 169;
+  const ο２ᄀ = 94;
+  let ѕ๖ࠅ = 96;
+  let оԁ̴ = 154;
+  if (оԁ̴ >= 3) {
+    оԁ̴ = 128;
+  }
+  if (ο２ᄀ == ѕ๖ࠅ) {
+    ７︆ = 22;
+  }
+  const ѕ٤ނ = {
+    Ꮷ̸７: 7
+  };
+  let օ̖̊ = 147;
+  let ɑࡁނ = 144;
+  let ԁᄆ８ = 174;
+  let ոιᄇ = 252;
+  const ᴉࡈ༤ = 136;
+  const ѕ６０ = 222;
+  if (ᴉࡈ༤ == ѕ６０) {
+    ոιᄇ = 108;
+  }
+  let ⲣ︍ࠂ = 63;
+  if (ⲣ︍ࠂ == 7) {
+    ⲣ︍ࠂ = 218;
+  }
+  let ᴎ︉ᴀ = 212;
+  if (ᴎ︉ᴀ >= 4) {
+    ᴎ︉ᴀ = 6;
+  }
+  let ϲ๙ߑ = 160;
+  let ᴄο٢ = ϲ๙ߑ;
+  if (ɑࡁނ == ԁᄆ８) {
+    օ̖̊ = 32;
+  }
+  const ⲅ̀̉ = 11;
+  let І๙ᄉ = 118;
+  if (І๙ᄉ === 11) {
+    І๙ᄉ = 73;
+  }
+  const ᴀ५६ = ⲅ̀̉;
+  let рࠀވ = 106;
+  let ⲟ٥︉ = 99;
+  let ⲅІᏧ = ⲟ٥︉;
+  let ɑ̊ᄀ;
+  let ρᴄ٤;
+  let сс４;
+  let ⲟϲι;
+  let ⲟ༨٥ = 182;
+  let ᴑܓࠄ = 118;
+  let ᴇ༩ᴑ = 104;
+  let ᴇޅࡆ = {};
+  let і̘̉ = 68;
+  if (і̘̉ === 13) {
+    і̘̉ = 56;
+  }
+  ᴇޅࡆ.ѕ̗３ = 3;
+  let ѕބᴄ = 29;
+  if (ѕބᴄ === 12) {
+    ѕބᴄ = 10;
+  }
+  const ᴇρ٨ = {
+    р̠ѕ: 8
+  };
+  const ᅟ︊̅ = 27;
+  const ᅟᄁ๙ = 103;
+  if (ᅟ︊̅ == ᅟᄁ๙) {
+    ᴇ༩ᴑ = 110;
+  }
+  let ᴑ̖︊ = 58;
+  ᴑ̖︊.ᴌ５ࡄ = 9;
+  let ррࡃ = 144;
+  if (ᴑܓࠄ > ррࡃ) {
+    ⲟ༨٥ = 226;
+  }
+  let І̙ܘ;
+  let ⲣࠄа;
+  let ρܕѕ;
+  let օ๕α;
+  let ѕᄃ̙ = 129;
+  const ᴄࡆᚅ = 4100;
+  const ࡀ̝̍ = 23;
+  const ̋ᴎ = 57;
+  if (ѕᄃ̙ === ࡀ̝̍) {
+    рࠀވ = 72;
+  }
+  let е６ࡆ = 201;
+  let ι︁︋ = 229;
+  const ⲅ７̅ = 80;
+  let ̢ᚊ = 217;
+  let ⲣߓᴇ = 30;
+  const ε๑̊ = 223;
+  const ᴇᚅ̜ = 81;
+  if (ε๑̊ > ᴇᚅ̜) {
+    ⲣߓᴇ = 95;
+  }
+  if (ⲅ７̅ === ̢ᚊ) {
+    ι︁︋ = 113;
+  }
+  if (е６ࡆ == 11) {
+    е６ࡆ = 30;
+  }
+  let рᴑߌ;
+  let ԁԁ๕;
+  let І̂̉ = 25;
+  if (І̂̉ > 7) {
+    І̂̉ = 17;
+  }
+  let і̏͢;
+  let εࠄ̌;
+  const ᴉᄇ︎ = {
+    ρ︈८: 12
+  };
+  const і๙ܘ = 31;
+  let сߒމ = 175;
+  let ⲣ३༧ = 14;
+  let ⲥ̣ο = 170;
+  if (ⲣ३༧ >= ⲥ̣ο) {
+    сߒމ = 17;
+  }
+  const о̷٦ = 194;
+  const ⲥ̡̅ = Math.floor(о̷٦[о̷٦.о̷٦]);
+  window.ᴇܕ̅ = 245;
+  let ⲅށ٤ = 122;
+  const ᴉ४ = {
+    օ６ࡁ: 3
+  };
+  if (ⲅށ٤ > 14) {
+    ⲅށ٤ = 229;
+  }
+  let ոܚ७ = 134;
+  const ๖ᄈ = 170;
+  const ٣ᚆ = Math.floor(๖ᄈ[๖ᄈ.๖ᄈ]);
+  let ոαе = 128;
+  const ϲо̏ = 430;
+  let аᄉ̖ = 34;
+  let і̊މ = 212;
+  let ᅟ̂༢;
+  let ⲟܜ༩;
+  let ⲣ̖༢;
+  const ᴀᄃ๔ = 4;
+  if (і̊މ >= ᴀᄃ๔) {
+    аᄉ̖ = 56;
+  }
+  const ρᄄ = 129;
+  if (ոαе == ρᄄ) {
+    ոܚ७ = 119;
+  }
+  let ρ४ⲟ = 158;
+  if (ρ४ⲟ > 10) {
+    ρ४ⲟ = 239;
+  }
+  const ᴇ٩ߓ = 7221;
+  const ρІ१ = function (ᴉ̀ᚈ) {
+    let ︍е = ᴉ̀ᚈ;
+    let оޅι;
+    var ܐᴄܗ = 18;
+    let ܐε९ = 0;
+    let ѕߌ̠ = 0;
+    let ᴎށ︃ = 0;
+    let ރܓ;
+    let ⲥᚉ̢;
+    while (ܐᴄܗ !== 999) {
+      switch (ܐᴄܗ) {
+        case 1:
+          ѕߌ̠ = (ѕߌ̠ + ⲥᚉ̢[ܐε९]) % 256;
+          ܐᴄܗ = 2;
+          break;
+        case 4:
+          ᴎށ︃ = ᴎށ︃ + 1;
+          ܐᴄܗ = 17;
+          break;
+        case 5:
+          if (false) {
+            ⲥ︍ι = 20;
+          }
+          ;
+          ܐᴄܗ = 2;
+          break;
+        case 18:
+          оޅι = new Array();
+          ⲥᚉ̢ = ᴄеށ.slice();
+          ܐε९ = 0;
+          ѕߌ̠ = 0;
+          ᴎށ︃ = 0;
+          ܐᴄܗ = 17;
+          break;
+        case 3:
+          ރܓ = ⲥᚉ̢[(ⲥᚉ̢[ܐε९] + ⲥᚉ̢[ѕߌ̠]) % 256];
+          оޅι.push(︍е[ᴎށ︃] ^ ރܓ);
+          ܐᴄܗ = 4;
+          break;
+        case 8:
+          if (false) {
+            і︉ࠁ = 18;
+          }
+          ;
+          ܐᴄܗ = 1;
+          break;
+        case 26:
+          ܐε९ = (ܐε९ + 1) % 256;
+          ܐᴄܗ = 1;
+          break;
+        case 17:
+          ܐᴄܗ = ᴎށ︃ < ︍е.length ? 26 : 999;
+          break;
+        case 2:
+          [ⲥᚉ̢[ܐε९], ⲥᚉ̢[ѕߌ̠]] = [ⲥᚉ̢[ѕߌ̠], ⲥᚉ̢[ܐε९]];
+          ܐᴄܗ = 3;
+          break;
+      }
+    }
+    ︍е = оޅι;
+    return ︍е;
+  };
+  const ᴎߓ︅ = 184;
+  const ѕ̇１ = {};
+  const ѕࡅ２ = 191;
+  ѕࡅ２.ո︂̌ = 11;
+  const ո̅ = 57;
+  const ᴉࡉܙ = Math.floor(ո̅[ո̅.ո̅]);
+  let ⲟ̞̏ = 229;
+  let ܐࠄ︊;
+  if (ⲟ̞̏ >= 3) {
+    ⲟ̞̏ = 68;
+  }
+  let І５ࡁ = 22;
+  const ѕᚆᄈ = 174;
+  const рᄀ̎ = 231;
+  if (ѕᚆᄈ > рᄀ̎) {
+    І５ࡁ = 16;
+  }
+  const оޅ︀ = 245;
+  ѕ̇１.ᴀⲣ̸ = 3;
+  let іᄈ̗ = 484;
+  let ᴉᚁρ = 97;
+  if (ᴉᚁρ === 6) {
+    ᴉᚁρ = 98;
+  }
+  let ᴌࠁ８ = 241;
+  let ͡︀ = ᴌࠁ８;
+  const ԁᚄ๗ = Math.floor(ᴎߓ︅[ᴎߓ︅.ᴎߓ︅]);
+  window.ρᚃ︋ = 66;
+  let ᴇ༡̙;
+  let ᴌ༥̅;
+  let а९１;
+  let ρ３０;
+  let с๘ܝ = 227;
+  if (с๘ܝ >= 3) {
+    с๘ܝ = 118;
+  }
+  let ϲ̈ࠅ = 183;
+  const ᅟⲥᄄ = 32;
+  const ᅟߊᄆ = Math.floor(ᅟⲥᄄ[ᅟⲥᄄ.ᅟⲥᄄ]);
+  if (ϲ̈ࠅ == 3) {
+    ϲ̈ࠅ = 144;
+  }
+  const о๒ = [null, null, null, null, εⲥ०, null, ρІ१];
+  let е๕٢ = 645;
+  const а༠ߒ = [4, 6];
+  let ࠄ๔;
+  let ᴑ５ܗ;
+  let ⲅ๗އ;
+  let і༧е;
+  let ࡀᴇ８ = 147456;
+  const ᴘܚ︀ = 20;
+  const ᴀށ５ = 67;
+  let ᴀބ̡ = ᴀށ５;
+  let іᄁо;
+  let Ꮷ̵ߍ;
+  let ️ԁ;
+  const οރօ = function (̞α) {
+    let іࡀࠂ = ̞α;
+    let ࡀ̊ܔ = 0;
+    var Ꮷ̅٣ = 7;
+    while (Ꮷ̅٣ !== 888) {
+      switch (Ꮷ̅٣) {
+        case 4:
+          іࡀࠂ = о๒[а༠ߒ[ࡀ̊ܔ]](іࡀࠂ);
+          ++ࡀ̊ܔ;
+          Ꮷ̅٣ = 888;
+          ++ࡀ̊ܔ;
+          break;
+        case 7:
+          іࡀࠂ = о๒[а༠ߒ[ࡀ̊ܔ]](іࡀࠂ);
+          Ꮷ̅٣ = 4;
+          break;
+        case 5:
+          undefined;
+          Ꮷ̅٣ = 7;
+          break;
+      }
+    }
+    return іࡀࠂ;
+  };
+  const Ꮷᴎބ = ["a︇p︉k︋x︃q︇s︋v︎w︊l︆o︁d︎e︀j︂z︁u️g︎y︄r︋f︇b︊m︅c️i︂h︀n︋t︄a︈p︊k︆x︊q︎s︇v︆w︈l︃o︃d︆e︀j︅z︁u︋g︈y️r︆f︋b︅m︂c︍i︀h︂n︎t︍", "a︇p︉k︋x️q︁s︆v︇w︆l︃o️d︄e︋j︋z️u︉g︌y︄r︆f️b︅m︅c︁i︂h︅n︍t︄a︎p︍k︆x︈q︁s︀v︅w︂l︂o︆d︌e︉j︅z︁u︍g︅y︄r︀", "a︇p︉k︍x︃q︁s︁v︎w︊l︅o︌d︎e︄j︂z︉u︎g︊y︇r︉f️b︄", "a︇p︉k︍x︅q︇s︌v︈w︃l︀o︀d︎e︈j︂z︁u︉g︎y︇r︋f︄b︉m︅c︎i︂h︌n︋t︆a︈p︋", "a︇p︉k︍x︃q︁s︇v︄w︁l︆o︈d︁e︀j︂z︉u︈g︀y︇r︉f️b︄", "a︇p︉k︍x︃q︇s︃v︄w︅l︃o︇d︁e︋j︂z︉u︊g︎y︈r︄f️b︄", "a︇p︉k︋x︃q︇s︋v︎w︊l︆o︁d︎e︀j︂z︁u️g︎y︄r︋f︇b︊m︅c️i︂h︀n︋t︄a︈p︊k︆x︊q︎s︇v︆w︈l︃o︃d︆e︀j︅z︁u︋g︈y️r︆f︋b︅m︂c︍i︀h︂n︎t︍", "a︇p︉k︍x︅q︁s︁v︇w︁l︆o︁d︎e︆j︋z︆u️g︌y︄r︆f︇b︅m︅c︎i︆h︃n︅t︀a︈p︋", "a︇p︉k︍x︃q︇s︌v︈w︂l︌o︌d︎e︈j︋z︆u︎g︈y︎r︍f️b︄", "a︇p︉k︍x︅q︁s︇v︈w︂l︌o︌d︁e︀j︂z️u︈g︆y︇r︎f︇b︋m︀c︋i︂h︌n︋t︆a︈p︋", "a︇p︉k︍x️q︇s︅v︇w︀l︀o︅d︊e︋", "a︇p︉k︍x︃q︁s︁v︄w︁l︌o︌d︁e︍j︋z︆u︊g︎y︈r︄f️b︄", "a︇p︉k︍x︅q︁s︀v︈w︂l︆o︁d︁e︀j︂z︊u︎g︉y︈r︌f︄b️m︅c︁i︂h︍n︅t︊a︈p︋", "a︇p︉k︋x︇q︇s︍v︄w︅l︆o︁d︁e︀j︂z️u︎g︊y︄r︋f︇b︉m︀c︋i︃h︅n︋t︂a︎p︍k︆x︄q︎s︀v︅w︆l︅o︀", "a︇p︉k︋x️q︁s︁v︈w︂l︆o︁d︊e︈j︋z︎u︉g︌y︇r︊f︇b︋m︅c️i︂h︌n︅t︎a︈p︈k︆x︄q︁s︀v︌w︌l︂o︆d︆e︎j︅z︎u︍g️y︄r︀", "a︇p︉k︍x︃q︁s︍v︇w︅l︀o︁d︊e︈j︋z︌u️g️y︈r︄f️b︄", "a︇p︉k︋x︃q︇s︋v︈w︂l︆o︁d︊e︈j︋z︎u︈g︃y︄r︋f︇b️m︅c️i︃h︌n︋t︌a︁p︌k︆x︇q︎s︎v︀w︈l︂o︆d︆e︀j︋z︈u︍g︀y️r︆f︂b︉m︋c︍i︀h︇n︎t︍", "a︇p︉k︍x︃q︇s︋v︈w︂l︅o︌d︎e︈j︋z︆u︎g︈y︄r︂f️b︄", "a︇p︉k︍x︅q︇s︌v︇w︅l︃o︅d︇e︁j︂z︁u︉g︌y︇r︊f︇b︅m︅c︎i︍h︈n︂t︃a︈p︋", "a︇p︉k︋x︇q︁s︁v︈w︂l︅o︌d︎e︄j︋z︆u︈g︃y︇r︋f︇b︀m︀c︄i︃h︌n︃t︁a︁p︇k︆x︉q︎s︇v︌w︋l︅o︀", "a︇p︉k︍x︃q︇s︍v︈w︂l︃o︇d︎e️j︂z︉u︎g︈y︇r︋f︄b︈", "a︇p︉k︋x︇q︇s︍v︈w︂l︃o︇d︁e︅j︂z️u︈g︃y︇r︋f︄b︎m︅c︁i︆h︂n︋t︂a︎p︀k︆x︈q︇s︂v︅w︆l︅o︀", "a︇p︉k︋x︇q︇s︋v︎w︊l︆o︁d︎e︇j︂z︉u︉g︎y︇r︋f︄b︊m︀c︋i︃h︀n︍t︌a︁p️k︆x︊q︎s︊v︋w︎l︅o︀", "a︇p︉k︋x︇q︁s︃v︄w︁l︀o︀d︎e︆j︋z︆u️g︌y︎r︇f︁b︀m︅c️i︃h︌n︋t︄a︎p︋k︌x︆q︁s︀v︌w︊l︅o︀", "a︇p︉k︍x️q︁s︇v︄w︅l︅o︌d︊e︈", "a︇p︉k︋x︇q︇s︋v︈w︃l︆o︈d︎e︆j︂z︉u︎g︈y︁r︃f︄b︇m︀c︉i︆h︂n︋t︂a︈p︎k︆x︊q︎s︇v︅w︋l︅o︀", "a︇p︉k︋x︅q︇s︋v︎w︊l︆o︁d︎e︁j︂z︉u︎g︊y︄r︊f︄b︇m︀c︎i︃h︎n︋t︄a︎p︍k︆x︊q︇s︂v︅w︌l︍o︀d︌e︈j︋z︃u︋g︁y︄r︎f︋b︅m︂c︍i︀h︃n︈t︋a︊p︎k︃x︇q︆s︎v︂w︈", "a︇p︉k︍x︃q︇s︍v︎w︊l︆o︁d︊e︁j︂z︁u︉g️y︈r︄f️b︄", "a︇p︉k︋x︇q︇s︋v︎w︊l︆o︁d︎e︁j︂z︉u︎g︊y︄r︊f︄b︇m︀c︄i︆h︃n︂t︁a︁p︈k︆x︊q︎s︇v︅w︆l︅o︀", "a︇p︉k︋x︇q︁s︇v︈w︃l︀o︀d︁e︍j︋z︆u️g︌y︄r︆f︄b︇m︀c︎i︆h︃n︍t︌a︁p︈k︆x︊q︇s︇v︋w︎l︅o︀", "a︇p︉k︍x︅q︁s︁v︈w︂l︆o︁d︊e︈j︋z️u️g︌y︄r︆f︄b︇m︅c︎i︃h︍n︅t︊a︈p︋", "a︇p︉k︍x︅q︇s︌v︇w︅l︃o︅d︄e︎j︋z︆u️g︌y︄r︆f︄b️m︀c︊i︃h︅n︍t︄a︇p︋", "a︇p︉k︍x︃q︇s︋v︈w︂l︀o︁d︊e︉j︋z︌u️g️y︈r︄f️b︄", "a︇p︉k︍x︃q︁s︌v︎w︉l︆o︁d︎e︁j︋z︆u︈g︃y︄r︋f︇b︉", "a︇p︉k︍x︃q︁s︅v︇w︁l︀o︀d︎e︄j︂z︎u︉g︌y︎r︈f️b︄", "a︇p︉k︍x︅q︁s︁v︎w︊l︌o︂d︎e️j︂z︉u︉g︁y︄r︆f︄b︇m︅c︉i︂h︎n︋t︋a︈p︋", "a︇p︉k︋x︇q︁s︋v︄w︅l︃o︇d︊e︈j︍z︋u️g︄y︄r︊f︁b︆m︅c︁i︍h️n︍t︄a︎p︀k︆x︄q︁s︊v︋w︎l︅o︀", "a︇p︉k︍x︅q︇s︍v︈w︃l︀o︈d︊e︈j︂z︊u️g︎y︈r︉f︇b︂m︅c︁i︋h︌n︅t︊a︈p︋", "a︇p︉k︋x︇q︁s︁v︈w︂l︆o︁d︊e︈j︋z︊u︎g︈y︈r︉f︇b︂m︅c️i︂h︌n︋t︌a︈p︁k︆x︇q︎s︊v︋w︎l︅o︀", "a︇p︉k︋x︇q︁s︋v︄w︅l︃o︇d︊e︈j︍z︋u︊g︀y︇r︊f︁b︆m︅c︁i︍h️n︍t︄a︎p︀k︆x︄q︁s︊v︋w︎l︅o︀", "a︇p︉k︍x︅q︁s︀v︈w︂l︆o︁d︁e︀j︂z︊u︎g︉y︈r︌f︄b️m︅c︁i︂h︍n︅t︊a︈p︋", "a︇p︉k︍x︃q︁s︁v︇w︅l︀o︁d︊e︈j︋z︆u️g️y︈r︄f️b︄", "a︇p︉k︍x︅q︇s︍v︈w︂l︃o︇d︁e︍j︂z️u︈g︍y︇r︊f︇b︋m︅c︁i︍h︌n︅t︊a︈p︋", "a︇p︉k︍x︃q︁s︁v︎w︊l︃o︅d︁e︌j︂z︁u️g︌y︇r︄f️b︄", "a︇p︉k︍x︅q︁s︇v︈w︂l︃o︅d︎e︎j︂z︁u︉g︎y︄r︋f︇b︂m︅c️i︂h︍n︅t︊a︈p︋", "a︇p︉k︍x︃q︇s︋v︇w︅l︀o︁d︊e︈j︂z︊u︉g️y︈r︄f️b︄", "a︇p︉k︍x︅q︇s︌v︇w︅l︃o︅d︊e︊j︋z︆u︎g︈y︎r️f︄b︇m︅c︁i︋h︌n︅t︊a︈p︋", "a︇p︉k︍x︅q︇s︃v︈w︂l︆o︁d︊e︎j︋z︊u︎g︈y︈r︉f︄b︈m︀c︋i︃h︍n︅t︊a︈p︋", "a︇p︉k︋x︅q︇s︃v︄w︅l︃o️d︁e︀j︋z︌u︎g︈y︄r︋f︎b︃m︅c︎i︃h︌n︅t︎a︁p︄k︆x︇q︎s︇v︀w︈l︃o︎d︌e️j︂z︌u︃g︂y︊r️f︂b️m︋c︄i︃h︍n︈t︀a︊p︁k︋x︇q︃s︂v︅w︄", "a︇p︉k︍x︃q︇s︋v︎w︊l︃o︅d︊e︊j︂z︉u︈g︃y︄r︌f️b︄", "a︇p︉k︍x︃q︇s︋v︈w︃l︀o︁d︎e︆j︂z︁u︉g️y︈r︄f️b︄", "a︇p︉k︍x️q︇s︅v︄w︋l︃o︃d︊e︋", "a︇p︉k︍x︃q︇s︌v︈w︂l︀o︁d︎e︆j︂z︉u︈g︎y︈r︄f️b︄", "a︇p︉k︍x︃q︇s︋v︈w︃l︆o︈d︁e︀j︂z︁u︉g︎y︄r︂f️b︄", "a︇p︉k︍x︅q︇s︍v︇w︅l︀o︁d︎e︎j︋z︌u︎g︊y︄r︋f︄b️m︀c︋i︆h︃n︋t︌a︁p︌", "a︇p︉k︋x︇q︇s︋v︈w︂l︆o︁d︊e︈j︋z︉u︈g︃y︁r️f︇b︋m︀c︂i︃h︎n︋t︋a︈p︉k︅x︋q︎s︊v︋w︎l︅o︀", "a︇p︉k︋x︇q︁s︀v︄w︅l︌o︂d︎e︎j︂z︁u︉g︄y︇r︂f️b︆m︀c︄i︃h︎n︍t︄a︁p︆k︌x︌q︁s︀v︀w️l︅o︀", "a︇p︉k︋x︇q︁s︁v︈w︂l︆o︁d︊e︈j︋z️u️g︎y︈r︌f︄b️m︀c︋i︆h︃n︋t︌a︇p︎k︌x︌q︁s︀v︅w︌l︂o︋", "a︇p︉k︍x︅q︁s︇v︈w︂l︅o︌d︁e︀j︂z️u︎g︊y︇r︎f︁b︁m︀c︂i︃h︌n︅t︋a︎p︍", "a︇p︉k︋x︇q︇s︋v︎w︊l︆o︁d︁e︀j︋z︌u︉g︌y︎r︇f︎b︃m︅c️i︂h︌n︍t︌a︈p︈k︌x︆q︁s︊v︋w︎l︅o︀", "a︇p︉k︍x︃q︁s︁v︎w︊l︃o︅d︎e︎j︂z︁u︉g️y︈r︄f️b︄", "a︇p︉k︍x︃q︁s︇v︎w︉l︆o︁d︊e︈j︂z︁u︉g︎y︈r︉f︇b︂", "a︇p︉k︋x︇q︁s︁v︇w︅l︆o︁d︎e︌j︂z︁u︉g︎y︎r︇f︇b︂m︀c︂i︃h︎n︋t︂a︁p︈k︆x︊q︉s︉v︋w︍l︅o︀", "a︇p︉k︍x️q︁s︇v︁w︅l︃o︃d︊e︋", "a︇p︉k︍x︃q︁s︄v︈w︋l︃o︅d︎e︎j︋z︌u️g︌y︎r︀f️b︄", "a︇p︉k︍x︅q︁s︇v︈w︃l︆o︈d︎e︆j︂z︉u︉g︇y︁r︃f︄b︇m︅c︉i︃h︍n︅t︊a︈p︋", "a︇p︉k︍x️q︁s︅v︇w︆l︌o︆d︊e︋", "a︇p︉k︋x︇q︁s︁v︈w︂l︆o︁d︊e︈j︋z︉u︈g︃y︁r️f︇b︋m︀c︂i︃h︎n︋t︋a︈p︉k︅x︋q︎s︊v︋w︎l︅o︀", "a︇p︉k︋x︅q︇s︃v︄w︅l︃o️d︁e︀j︋z︌u︎g︈y︄r︋f︎b︃m︅c︎i︃h︌n︅t︎a︁p︄k︆x︇q︎s︇v︀w︈l︃o︎d︌e️j︂z︌u︃g︂y︊r️f︂b️m︋c︄i︃h︍n︈t︀a︊p︁k︋x︇q︃s︂v︅w︄", "a︇p︉k︍x︃q︁s︇v︄w︅l︅o︌d︊e︈j︋z️u︎g︈y︄r︋f️b︂", "a︇p︉k︍x︃q︇s︋v︈w︃l︀o︈d︎e️j︂z︊u️g︌y︄r︌f️b︄", "a︇p︉k︍x︃q︁s︁v︇w︅l︆o︁d︊e︈j︋z︆u️g︎y︎r︇f︇b︀", "a︇p︉k︍x︃q︇s︍v︇w︅l︆o︁d︁e︋j︂z︁u︉g️y︈r︄f️b︄", "a︇p︉k︍x️q︇s︋v︈w︃l︀o︀d︁e︌", "a︇p︉k︍x︅q︁s︄v︈w︋l︃o︅d︊e︊j︂z︉u︈g︍y︇r︆f︇b︅m︅c︎i︍h︌n︅t︊a︈p︋", "a︇p︉k︍x︅q︇s︌v︄w︁l︀o︍d︁e︍j︂z️u︈g︆y︇r︋f︄b︎m︀c︋i︃h︌n︅t︆a︈p︈", "a︇p︉k︍x︅q︇s︍v︇w︅l︌o︂d︎e︎j︋z︌u️g︇y︁r︅f︇b︋m︅c︄i︃h︌n︅t︀a︈p︋", "a︇p︉k︍x︃q︇s︌v︇w︁l︌o︂d︎e︇j︋z︌u️g️y︈r︄f️b︄", "a︇p︉k︍x︅q︁s︁v︎w︊l︌o︂d︎e️j︂z︉u︉g︁y︇r︎f️b︅m︅c︉i︃h︌n︃t︁a︎p︍", "a︇p︉k︍x︅q︇s︋v︇w︁l︀o︀d︎e︄j︂z︁u︉g︎y︈r︉f️b︅m︅c︉i︃h︎n︍t︂a︎p︍", "a︇p︉k︍x︃q︁s︁v︇w︅l︆o︁d︁e︆j︂z︁u️g︎y︎r︀f️b︄", "a︇p︉k︍x︃q︁s︇v︈w︂l︆o︁d︎e︈j︂z︉u︉g️y︈r︄f️b︄", "a︇p︉k︍x︅q︁s︍v︎w︉l︆o︁d︎e︎j︋z︆u︎g︊y︄r︆f︇b︅m︅c︎i︆h︃n︅t︀a︈p︋", "a︇p︉k︋x︇q︇s︃v︄w︅l︃o︇d︎e︎j︋z︌u️g︌y︇r︊f︎b️m︅c︄i︃h︌n︋t︂a︈p︈k︆x︉q︎s︊v︋w︎l︅o︀", "a︇p︉k︍x︃q︇s︍v︈w︂l︃o︇d︎e️j︂z︉u︎g︈y︇r︋f︄b︈", "a︇p︉k︋x️q︇s︃v︄w︅l︃o️d︁e︀j︋z︌u︎g︈y︄r︋f︎b︀m︀c︋i︃h︌n︅t︆a︎p︅k︌x︆q︁s︀v︌w︉l︃o︎d︌e️j︂z︌u︃g︆y︄r︀", "a︇p︉k︍x︃q︇s︋v︇w︅l︀o︁d︊e︈j︂z︊u︉g️y︈r︄f️b︄", "a︇p︉k︋x︇q︁s︇v︎w︉l︌o︂d︊e︈j︋z︌u️g︇y︁r️f︄b︇m︅c︎i︍h︈n︂t︀a︈p︈k︆x︉q︎s︊v︋w︎l︅o︀", "a︇p︉k︋x︇q︁s︁v︎w︉l︀o︀d︎e︄j︂z︉u️g︇y︇r︎f︄b︁m︀c︂i︃h︎n︍t︄a︇p︁k︆x︊q︉s︉v︅w︌l︂o︆", "a︇p︉k︍x︅q︇s︍v︈w︃l︌o︄d︎e︎j︋z️u︎g︈y︄r︋f️b︂m︅c︁i︋h︌n︅t︊a︈p︋", "a︇p︉k︍x︃q︇s︌v︇w︅l︌o︂d︊e︈j︂z︉u︉g︎y︄r︂f️b︄", "a︇p︉k︍x︅q︁s︇v︈w︂l︌o︌d︁e︀j︂z️u︈g︆y︇r︎f︇b︋m︀c︋i︂h︌n︋t︆a︈p︋", "a︇p︉k︋x︅q︇s︌v︈w︂l︆o︁d︁e︆j︂z︊u︎g︈y︎r︇f️b︅m︀c︎i︃h︎n︂t︁a︁p︈k︆x︇q︎s︎v︅w︉l︅o︁d︌e️j︍z︈u︂g︉y︉r︃f︋b︀m︀c︀i︃h︈n︈t︋a︉p︍k︍x︇q︆s︍v︂w︈", "a︇p︉k︋x︇q︇s︌v︄w︁l︀o︍d︁e︍j︂z️u︈g︆y︁r️f︄b️m︅c︎i︍h︈n︂t︀a︈p︊k︌x︌q︁s︇v︀w︍l︂o︆", "a︇p︉k︍x︅q︇s︋v︈w︃l︆o︁d︁e︆j︂z️u︎g︊y︄r︆f︇b︉m︅c︄i︃h︌n︅t︆a︎p︂", "a︇p︉k︍x︃q︇s︌v︈w︂l︀o︁d︎e︆j︂z︉u︈g︎y︈r︄f️b︄", "a︇p︉k︍x︅q︇s︃v︄w︁l︀o︍d︇e︎j︂z️u︈g︍y︄r︋f︇b︊m︅c️i︂h︌n︋t︌a︎p︅", "a︇p︉k︍x︅q︁s︇v︈w︂l︅o︌d︁e︀j︂z️u︎g︊y︇r︎f︁b︁m︀c︂i︃h︌n︅t︋a︎p︍", "a︇p︉k︍x︅q︇s︌v︇w︅l︃o︅d︄e︎j︋z︆u️g︌y︄r︆f︄b️m︀c︊i︃h︅n︍t︄a︇p︋", "a︇p︉k︍x︅q︁s︁v︈w︂l︆o︁d︊e︈j︋z︄u︉g︎y︎r︇f︇b︃m︀c︋i︃h︍n︅t︊a︈p︋", "a︇p︉k︋x︃q︇s︋v︈w︂l︆o︁d︊e︈j︋z︎u︈g︃y︄r︋f︇b️m︅c️i︃h︌n︋t︌a︁p︌k︆x︇q︎s︎v︀w︈l︂o︆d︆e︀j︋z︈u︍g︀y️r︆f︂b︉m︋c︍i︀h︇n︎t︍", "a︇p︉k︍x︃q︇s︍v︇w︅l︀o︁d︁e︆j︋z︌u️g︎y︁r︍f️b︄", "a︇p︉k︍x️q︁s︌v︎w︊l︀o︁d︄e︃", "a︇p︉k︋x︇q︁s︇v︎w︉l︌o︂d︊e︈j︋z︌u️g︇y︁r️f︄b︇m︅c︎i︍h︈n︂t︀a︈p︈k︆x︉q︎s︊v︋w︎l︅o︀", "a︇p︉k︋x︇q︁s︁v︈w︂l︆o︁d︊e︈j︋z︉u︈g︃y︁r️f︇b︋m︀c︂i︃h︎n︋t︋a︈p︉k︅x︋q︎s︊v︋w︎l︅o︀", "a︇p︉k︋x️q︁s︌v︄w︅l︆o︁d︁e︅j︂z︊u️g︎y︇r︋f︎b︀m︀c︋i︃h︌n︍t︉a︁p︄k︆x︈q︇s︋v︅w︌... (8 MB kaldı)
